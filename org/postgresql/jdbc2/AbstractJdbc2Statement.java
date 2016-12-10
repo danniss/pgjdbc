@@ -2509,8 +2509,10 @@ public abstract class AbstractJdbc2Statement implements BaseStatement
         }
 
         public void handleResultRows(Query fromQuery, Field[] fields, Vector tuples, ResultCursor cursor) {
-            handleError(new PSQLException(GT.tr("A result was returned when none was expected."),
-                                          PSQLState.TOO_MANY_RESULTS));
+	    // do not throw error if batched request return something
+	    // this will make sql like "select function(...)" inside a batch valid
+            //handleError(new PSQLException(GT.tr("A result was returned when none was expected."),
+            //                              PSQLState.TOO_MANY_RESULTS));
         }
 
         public void handleCommandStatus(String status, int updateCount, long insertOID) {
