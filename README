@@ -2,4 +2,4 @@ postgres jdbc does not support select in batch. this drives me crazy as it makes
 
 REASON:
 as i need to implement upsert in version 8.2, I wrote a upsert function on db side.
-and i also need to call it repeatedly. the performance will ne unaccetable without batching on select.
+and i also need to call it repeatedly. the performance will be unacceptable without batching on select.
